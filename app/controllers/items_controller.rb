@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 	def index
+		@items = Item.all
 	end
 
 	def new
@@ -15,6 +16,31 @@ class ItemsController < ApplicationController
 		else
 			render "new"
 		end
+	end
+
+	def show
+		@item = Item.find(params[:id])
+	end
+
+	def edit
+		@item = Item.find(params[:id])
+	end
+
+	def update
+		@item = Item.find(params[:id])
+		@item.user = current_user
+		if @item.update(item_params)
+			flash[:success] = "編集しました"
+			redirect_to item_path(@item)
+		else
+			render "edit"
+		end
+	end
+
+	def destroy
+		@item =  Item.find(params[:id])
+		@item.destroy
+		redirect_to items_path
 	end
 
 	private

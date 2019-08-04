@@ -30,12 +30,12 @@
 
   <div class="field">
     <%= f.label :郵便番号 %><br />
-    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    <input type="text" name="postalcode" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');">
   </div>
 
   <div class="field">
     <%= f.label :住所 %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "off" %>
+    <input type="text" name="address" size="60">
   </div>
 
   <div class="field">

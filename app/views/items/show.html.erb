@@ -1,0 +1,50 @@
+<h1>アイテム詳細</h1>
+
+<div class = "field">
+	<%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
+</div>
+
+<div class = "field">
+	<p>アイテム : </p>
+	<%= @item.item_name %>
+</div>
+
+<div class = "field">
+	<p>カテゴリー : </p>
+	<%= @item.category_name %>
+</div>
+
+<div class = "field">
+	<p>長さ : </p>
+	<%= @item.length %>
+</div>
+
+<div class = "field">
+	<p>ウエイト : </p>
+	<%= @item.weight %>
+</div>
+
+<div class = "field">
+	<p>グリップ : </p>
+	<%= @item.grip %>
+</div>
+
+<div class = "field">
+	<p>フェイス : </p>
+	<%= @item.face %>
+</div>
+
+<div class = "field">
+	<p>カラー : </p>
+	<%= @item.color %>
+</div>
+
+<div class = "field">
+	<%= @item.body %>
+</div>
+
+
+<% if @item.user == current_user %>
+	<%= link_to "編集", edit_item_path(@item), class: "btn btn-info" %>
+	<%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "削除してもよろしいでしょうか？", class: "btn btn-danger" %>
+<% end %>
