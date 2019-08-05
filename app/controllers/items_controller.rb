@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 		@item.user = current_user
 		if @item.save
 			flash[:success] = "アイテムを登録しました"
-			redirect_to items_path
+			redirect_to root_path
 		else
 			render "new"
 		end
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 	def destroy
 		@item = Item.find(params[:id])
 		@item.destroy
-		redirect_to items_path
+		redirect_to root_path
 	end
 
 	private

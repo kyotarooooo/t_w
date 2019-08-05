@@ -17,11 +17,22 @@
 @import "bootstrap";            /*ここを追加*/
 
 
-///共通///
+///共通///////////////////////////////
 .space{
 	padding-top: 20px;
 }
 
 .success-message{
 	padding-top: 50px;
+}
+
+.field{
+	padding-top: 20px;
+}
+
+
+///新規登録/////////////////////////////
+
+.sign{
+	text-align: center;
 }

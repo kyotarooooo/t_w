@@ -8,45 +8,61 @@
 		<div class="col-xs-1"></div>
 	</div>
 
-	<div class = "field">
-		<%= attachment_image_tag current_user, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg", size:'350x350', class: 'img-circle profile-thumb my-img edit-img' %>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-4">
+		<div class = "user-show1">
+			<%= attachment_image_tag current_user, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg", size:'350x350', class: 'img-circle profile-thumb my-img edit-img' %>
+		</div>
+		<div class = "user-show1">
+			<%= link_to edit_user_path(current_user) do %>
+				<button class="btn btn-info">編集</button>
+			<% end %>
+		</div>
+		<div class = "user-show1">
+			<%= link_to new_item_path do %>
+				<button class="btn btn-warning">アイテムを登録</button>
+			<% end %>
+			<%= link_to new_lesson_path do %>
+				<button class="btn btn-warning">レッスンを登録</button>
+			<% end %>
+		</div>
 	</div>
-
-	<div class = "field">
+	<div class="col-xs-6">
+		<div class = "field">
 		<%= current_user.kanji %>
-	</div>
+		</div>
+		<div class = "field">
+			<%= current_user.kana %>
+		</div>
 
-	<div class = "field">
-		<%= current_user.kana %>
-	</div>
+		<div class = "field">
+			<%= current_user.user_name %>
+		</div>
 
-	<div class = "field">
-		<%= current_user.user_name %>
-	</div>
+		<div class = "field">
+			<%= current_user.email %>
+		</div>
 
-	<div class = "field">
-		<%= current_user.email %>
-	</div>
+		<div class = "field">
+			<%= current_user.postal_code %>
+		</div>
 
-	<div class = "field">
-		<%= current_user.postal_code %>
-	</div>
+		<div class = "field">
+			<%= current_user.address %>
+		</div>
 
-	<div class = "field">
-		<%= current_user.address %>
-	</div>
+		<div class = "field">
+			<%= current_user.sex %>
+		</div>
 
-	<div class = "field">
-		<%= current_user.sex %>
+		<div class = "field">
+			<%= current_user.introduction %>
+		</div>
 	</div>
+	<div class="col-xs-1"></div>
+</div>
 
-	<div class = "field">
-		<%= current_user.introduction %>
-	</div>
-
-	<%= link_to "編集", edit_user_path(current_user) %>
-	<%= link_to "アイテムを投稿する", new_item_path %>
-	<%= link_to "レッスンを投稿する", new_lesson_path %>
 <!-- ログインしている以外の詳細ページ -->
 <% else %>
 	<div class="row space">
@@ -57,38 +73,39 @@
 		<div class="col-xs-1"></div>
 	</div>
 
-	<div class = "field">
-	<%= attachment_image_tag @user, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg", size:'350x350', class: 'img-circle profile-thumb my-img edit-img' %>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-4">
+		<div class = "field">
+			<%= attachment_image_tag @user, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg", size:'350x350', class: 'img-circle profile-thumb my-img edit-img' %>
+		</div>
 	</div>
+	<div class="col-xs-6">
+		<div class = "field">
+			<p> : <%= @user.sex %></p>
+		</div>
 
-	<div class = "field">
-		<%= @user.kanji %>
-	</div>
+		<div class = "field">
+			<%= @user.introduction %>
+		</div>
 
-	<div class = "field">
-		<%= @user.kana %>
-	</div>
-
-	<div class = "field">
-		<%= @user.sex %>
-	</div>
-
-	<div class = "field">
-		<%= @user.introduction %>
-	</div>
-
-	<!-- DM機能のリンク -->
-	<% if @isRoom == true %>
-		<%= link_to "DMを送る", room_path(@roomId) %>
-	<% else %>
-		<%= form_for @room do |f| %>
-			<%= fields_for @entry do |e| %>
-				<!-- コントローラで作られた新しいインスタンス(@entry)のuser_idに@user.idをいれる -->
-				<%= e.hidden_field :user_id, :value => @user.id %>
+		<!-- DM機能のリンク -->
+		<% if @isRoom == true %>
+			<%= link_to "DMを送る", room_path(@roomId) %>
+		<% else %>
+			<%= form_for @room do |f| %>
+				<%= fields_for @entry do |e| %>
+					<!-- コントローラで作られた新しいインスタンス(@entry)のuser_idに@user.idをいれる -->
+					<%= e.hidden_field :user_id, :value => @user.id %>
+				<% end %>
+				<%= f.submit "初めてDMを送る" %>
 			<% end %>
-			<%= f.submit "初めてDMを送る" %>
 		<% end %>
-	<% end %>
-	<!-- DMここまで -->
-
+		<!-- DMここまで -->
+	</div>
+	<div class="col-xs-1"></div>
+</div>
 <% end %>
+
+
+
