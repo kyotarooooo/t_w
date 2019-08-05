@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  root "items#index"
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
+  resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
 
 
 

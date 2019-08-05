@@ -74,4 +74,19 @@
 	<div class = "field">
 		<%= @user.introduction %>
 	</div>
+
+	<!-- DM機能のリンク -->
+	<% if @isRoom == true %>
+		<%= link_to "DMを送る", room_path(@roomId) %>
+	<% else %>
+		<%= form_for @room do |f| %>
+			<%= fields_for @entry do |e| %>
+				<!-- コントローラで作られた新しいインスタンス(@entry)のuser_idに@user.idをいれる -->
+				<%= e.hidden_field :user_id, :value => @user.id %>
+			<% end %>
+			<%= f.submit "初めてDMを送る" %>
+		<% end %>
+	<% end %>
+	<!-- DMここまで -->
+
 <% end %>

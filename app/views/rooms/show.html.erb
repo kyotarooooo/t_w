@@ -1,0 +1,21 @@
+<%= attachment_image_tag @entry2, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100', class: 'img-circle profile-thumb my-img edit-img' %>
+
+
+
+<hr>
+<% if @messages.present? %>
+	<% @messages.each do |m| %>
+		<strong><%= m.content %></strong>
+		<small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
+		<hr>
+	<% end %>
+<% else %>
+	<h3 class = "text-center">メッセージを送ってみよう！</h3>
+<% end %>
+
+<%= form_for @message do |f| %>
+	<%= f.text_field :content, :placeholder => "メッセージを入力してください", :size => 70 %>
+	<%= f.hidden_field :room_id, :value => @room.id %>
+	<br>
+	<%= f.submit "送信" %>
+<% end %>
