@@ -34,8 +34,9 @@
               <li><%= link_to "アイテム一覧", root_path %></li>
               <li class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "ユーザー一覧", users_path %></a></li>
+              <li class="active"><%= link_to "レッスン一覧", lessons_path %></li>
             </ul>
-            <p class="navbar-text navbar-right">ようこそ <%= current_user.user_name %> さん。</p>
+            <p class="navbar-text navbar-right">ようこそ <%= link_to current_user.user_name, user_path(current_user) %> さん。</p>
           </div>
         </div>
       </nav>

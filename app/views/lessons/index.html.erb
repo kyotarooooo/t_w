@@ -1,0 +1,9 @@
+<h1>レッスン一覧</h1>
+<% @lessons.each do |lesson| %>
+	<div>
+		<%= link_to lesson.lesson_name, lesson_path(lesson) %>
+		<%= lesson.location %>
+		<%= lesson.time %>
+		<%= lesson.entry_count %>
+	</div>
+<% end %>

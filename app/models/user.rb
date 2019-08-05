@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 	has_many :items, dependent: :destroy
+	has_many :lessons, dependent: :destroy
 	#以下2つはDM機能
 	has_many :messages, dependent: :destroy
 	has_many :entries, dependent: :destroy
