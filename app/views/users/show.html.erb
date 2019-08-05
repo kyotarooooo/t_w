@@ -1,0 +1,77 @@
+<!-- ログインしているユーザーの詳細ページ（マイページ） -->
+<% if @user == current_user %>
+	<div class="row space">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h1>マイページ</h1>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class = "field">
+		<%= attachment_image_tag current_user, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg", size:'350x350', class: 'img-circle profile-thumb my-img edit-img' %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.kanji %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.kana %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.user_name %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.email %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.postal_code %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.address %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.sex %>
+	</div>
+
+	<div class = "field">
+		<%= current_user.introduction %>
+	</div>
+
+	<%= link_to "編集", edit_user_path(current_user) %>
+<!-- ログインしている以外の詳細ページ -->
+<% else %>
+	<div class="row space">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h1><%= @user.user_name %>さん</h1>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class = "field">
+	<%= attachment_image_tag @user, :profile_image, :fill, 350, 350, format: 'jpeg', fallback: "no_image.jpg", size:'350x350', class: 'img-circle profile-thumb my-img edit-img' %>
+	</div>
+
+	<div class = "field">
+		<%= @user.kanji %>
+	</div>
+
+	<div class = "field">
+		<%= @user.kana %>
+	</div>
+
+	<div class = "field">
+		<%= @user.sex %>
+	</div>
+
+	<div class = "field">
+		<%= @user.introduction %>
+	</div>
+<% end %>

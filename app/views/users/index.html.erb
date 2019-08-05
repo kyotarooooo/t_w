@@ -1,0 +1,32 @@
+<div class="row space">
+	<div class="col-xs-1"></div>
+    <div class="col-xs-10">
+    	<h1>ユーザー一覧</h1>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+
+<div class="row space">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+    	<table class="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>ユーザー名</th>
+			<th>性別</th>
+		</tr>
+	</thead>
+	<% @users.each do |user| %>
+	<tbody>
+		<tr>
+			<th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100', class: 'img-circle profile-thumb my-img edit-img' %></th>
+			<td><%= link_to user.user_name, user_path(user) %></td>
+			<td><%= user.sex %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+    </div>
+    <div class="col-xs-1"></div>
+</div>

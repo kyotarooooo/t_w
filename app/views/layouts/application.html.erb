@@ -13,7 +13,7 @@
 
   <body>
     <!-- ヘッダー -->
-    <!-- 未ログイン時 -->
+    <!-- ログイン時 -->
     <% if user_signed_in? %>
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -33,14 +33,14 @@
             <ul class="nav navbar-nav">
               <li><%= link_to "アイテム一覧", items_path %></li>
               <li class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-              <li><a href="#">メニューＣ</a></li>
+              <li><%= link_to "ユーザー一覧", users_path %></a></li>
             </ul>
             <p class="navbar-text navbar-right">ようこそ <%= current_user.user_name %> さん。</p>
           </div>
         </div>
       </nav>
     <% else %>
-    <!-- ログイン時 -->
+    <!--未ログイン時 -->
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -67,6 +67,9 @@
       </nav>
     <% end %>
 
+    <div class = "success-message">
+      <%= flash[:success] %>
+    </div>
 
     <%= yield %>
   </body>
