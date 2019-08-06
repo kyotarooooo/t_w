@@ -1,65 +1,75 @@
-<h1>投稿</h1>
+<div class="row item-new1">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<h1>投稿</h1>
 
+		<% if @item.errors.any? %>
+		  <div id = "error_explanation" class = "alert alert-danger">
+		    <ul>
+		      <% @item.errors.full_messages.each do |message| %>
+		        <%= message %>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
 
-<% if @item.errors.any? %>
-  <div id = "error_explanation" class = "alert alert-danger">
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+		<%= form_for(@item) do |f| %>
 
+			<div class = "field">
+				<%= f.attachment_field :item_image %>
+			</div>
 
+			<div class = "field">
+				<%= f.label :アイテム名 %><br />
+				<%= f.text_field :item_name, autofocus: true, autocomplete: "off" %>
+			</div>
 
-<%= form_for(@item) do |f| %>
+			<div class = "field">
+				<%= f.label :カテゴリー名 %><br />
+				<%= f.select :category_name, [["ラケット", "ラケット"], ["ストリング", "ストリング"], ["雑貨", "雑貨"], ["その他", "その他"]],  :prompt => "選択してください" %>
+			</div>
 
-	<div class = "field">
-		<%= f.attachment_field :item_image %>
+			<div class = "field">
+				<%= f.label :長さ %><br />
+				<p><%= f.text_field :length, autofocus: true, autocomplete: "off" %>mm</p>
+			</div>
+
+			<div class = "field">
+				<%= f.label :重さ %><br />
+				<p><%= f.text_field :weight, autofocus: true, autocomplete: "off" %>g</p>
+			</div>
+
+			<div class = "field">
+				<%= f.label :グリップ %><br />
+				<%= f.text_field :grip, autofocus: true, autocomplete: "off" %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :フェイス %><br />
+				<p><%= f.text_field :face, autofocus: true, autocomplete: "off" %>inch</p>
+			</div>
+
+			<div class = "field">
+				<%= f.label :カラー %><br />
+				<%= f.text_field :color, autofocus: true, autocomplete: "off" %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :概要 %><br />
+				<%= f.text_area :body, size: "100x10", autofocus: true, autocomplete: "off" %>
+			</div>
+
+			<div class = "field">
+				<%= f.submit "登録する", :class => "btn btn-success" %>
+			</div>
+		<% end %>
 	</div>
+	<div class="col-xs-1"></div>
+</div>
 
-	<div class = "field">
-		<%= f.label :アイテム名 %><br />
-		<%= f.text_field :item_name, autofocus: true, autocomplete: "off" %>
-	</div>
 
-	<div class = "field">
-		<%= f.label :カテゴリー名 %><br />
-		<%= f.select :category_name, [["ラケット", "ラケット"], ["ストリング", "ストリング"], ["雑貨", "雑貨"], ["その他", "その他"]],  :prompt => "選択してください" %>
-	</div>
 
-	<div class = "field">
-		<%= f.label :長さ %><br />
-		<p><%= f.text_field :length, autofocus: true, autocomplete: "off" %>mm</p>
-	</div>
 
-	<div class = "field">
-		<%= f.label :重さ %><br />
-		<p><%= f.text_field :weight, autofocus: true, autocomplete: "off" %>g</p>
-	</div>
 
-	<div class = "field">
-		<%= f.label :グリップ %><br />
-		<%= f.text_field :grip, autofocus: true, autocomplete: "off" %>
-	</div>
 
-	<div class = "field">
-		<%= f.label :フェイス %><br />
-		<p><%= f.text_field :face, autofocus: true, autocomplete: "off" %>inch</p>
-	</div>
 
-	<div class = "field">
-		<%= f.label :カラー %><br />
-		<%= f.text_field :color, autofocus: true, autocomplete: "off" %>
-	</div>
-
-	<div class = "field">
-		<%= f.label :概要 %><br />
-		<%= f.text_area :body, autofocus: true, autocomplete: "off" %>
-	</div>
-
-	<div class = "field">
-		<%= f.submit "登録する" %>
-	</div>
-<% end %>

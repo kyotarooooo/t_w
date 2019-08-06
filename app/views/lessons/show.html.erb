@@ -1,26 +1,63 @@
-<h1>レッスン詳細</h1>
-<%= @lesson.lesson_name %>
-<%= @lesson.location %>
-<%= @lesson.time %>
-<p>定員<%= @lesson.entry_count %>人</p>
-<%= @lesson.over_view %>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-5">
+		<h1>レッスン詳細</h1>
+		<p class = "lesson-show2">レッスン名 : <%= @lesson.lesson_name %></p>
+		<p class = "lesson-show2">場所 : <%= @lesson.location %></p>
+		<p class = "lesson-show2">開催時間 : <%= @lesson.time %></p>
+		<p class = "lesson-show2">定員 : <%= @lesson.entry_count %>人</p>
+		<p class = "lesson-show2"><%= @lesson.over_view %></p>
+	</div>
+	<div class="col-xs-5">
+		<h3 class = "lesson-show1"><%= @lesson.attendances.count %>人が参加予定です</h3>
+		<% if @lesson.entry_count == @lesson.attendances.count %>
+			<% if current_user.already_attendanced?(@lesson) %>
+				<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete, :class => "btn btn-info" %>
+			<% else %>
+				<p>申し訳ございません。<br>
+				定員に達してしまいました。</p>
+			<% end %>
+		<% else %>
+			<% if current_user.already_attendanced?(@lesson) %>
+				<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete, :class => "btn btn-info" %>
+			<% else %>
+				<%= button_to "参加する", lesson_attendances_path(@lesson), :class => "btn btn-info" %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="col-xs-1"></div>
+</div>
 
-<h3><%= @lesson.attendances.count %>人が参加予定です</h3>
-<% if @lesson.entry_count == @lesson.attendances.count %>
-	<% if current_user.already_attendanced?(@lesson) %>
-		<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
-	<% else %>
-		<p>定員に達しました</p>
-	<% end %>
-<% else %>
-	<% if current_user.already_attendanced?(@lesson) %>
-		<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
-	<% else %>
-		<%= button_to "参加する", lesson_attendances_path(@lesson) %>
-	<% end %>
-<% end %>
 
-<h2>参加予定のユーザー</h2>
-<% @lesson.attendanced_users.each do |user| %>
-	<li><%= user.user_name %></li>
-<% end %>
+
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<h2>参加予定のユーザー</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ユーザー名</th>
+					<th>性別</th>
+					<th></th>
+				</tr>
+			</thead>
+			<% @lesson.attendanced_users.each do |user| %>
+			<tbody>
+				<tr>
+					<th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100', class: 'img-circle profile-thumb my-img edit-img' %>
+					</th>
+					<td><%= user.user_name %></td>
+					<td><%= user.sex %></td>
+					<td><%= link_to user_path(user) do %>
+							<button class="btn btn-success">詳細</button>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+			<% end %>
+		</table>
+	</div>
+	<div class="col-xs-1"></div>
+</div>

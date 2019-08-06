@@ -1,43 +1,47 @@
-<h1>個人レッスン投稿フォーム</h1>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<h1>個人レッスン投稿フォーム</h1>
+		<% if @lesson.errors.any? %>
+		  <div id = "error_explanation" class = "alert alert-danger">
+		    <ul>
+		      <% @lesson.errors.full_messages.each do |message| %>
+		        <%= message %>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
 
-<% if @lesson.errors.any? %>
-  <div id = "error_explanation" class = "alert alert-danger">
-    <ul>
-      <% @lesson.errors.full_messages.each do |message| %>
-        <%= message %>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+		<%= form_for(@lesson) do |f| %>
+			<div class = "field">
+				<%= f.label :レッスン名 %><br />
+				<%= f.text_field :lesson_name %>
+			</div>
 
-<%= form_for(@lesson) do |f| %>
-	<div class = "field">
-		<%= f.label :レッスン名 %>
-		<%= f.text_field :lesson_name %>
+			<div class = "field">
+				<%= f.label :場所 %><br />
+				<%= f.text_field :location %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :開催時間 %><br />
+				<%= f.text_field :time %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :定員 %><br />
+				<%= f.text_field :entry_count %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :概要 %><br />
+				<%= f.text_area :over_view, size: "100x10" %>
+			</div>
+
+			<div class = "field">
+				<%= f.submit "投稿する", :class => "btn btn-success" %>
+			</div>
+		<% end %>
 	</div>
-
-	<div class = "field">
-		<%= f.label :場所 %>
-		<%= f.text_field :location %>
-	</div>
-
-	<div class = "field">
-		<%= f.label :開催時間 %>
-		<%= f.text_field :time %>
-	</div>
-
-	<div class = "field">
-		<%= f.label :定員 %>
-		<%= f.text_field :entry_count %>
-	</div>
-
-	<div class = "field">
-		<%= f.label :概要 %>
-		<%= f.text_area :over_view %>
-	</div>
-
-	<div class = "field">
-		<%= f.submit "投稿する" %>
-	</div>
-
-<% end %>
+	<div class="col-xs-1"></div>
+</div>

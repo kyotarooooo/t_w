@@ -1,10 +1,28 @@
-<h1>レッスン一覧</h1>
-<% @lessons.each do |lesson| %>
-	<div>
-		<%= link_to lesson.lesson_name, lesson_path(lesson) %>
-		<%= lesson.location %>
-		<%= lesson.time %>
-		<%= lesson.entry_count %>
-		<p><%= lesson.attendanced_users.count %>人が参加中</p>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<h1>レッスン一覧</h1>
 	</div>
-<% end %>
+	<div class="col-xs-1"></div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<% @lessons.each do |lesson| %>
+			<div class = "lesson-index1">
+				<%= link_to lesson.lesson_name, lesson_path(lesson) %><br>
+				<br>
+				<%= lesson.location %><br>
+				<br>
+				<%= lesson.time %><br>
+				<br>
+				<%= lesson.entry_count %><br>
+				<br>
+				<%= lesson.attendanced_users.count %>人が参加中
+			</div>
+		<% end %>
+	</div>
+	<div class="col-xs-1"></div>
+</div>
