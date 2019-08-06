@@ -7436,3 +7436,198 @@ ActionView::Template::Error (undefined method `already_attendanced?' for #<User:
     12: 	<%= button_to "参加する", lesson_attendances_path(@lesson) %>
   
 app/views/lessons/show.html.erb:9:in `_app_views_lessons_show_html_erb__827818574027289137_70195952127240'
+Started GET "/lessons/1" for 10.0.2.2 at 2019-08-06 07:50:52 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLesson Load (4.4ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (4.3ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (158.3ms)
+Completed 200 OK in 6055ms (Views: 5789.4ms | ActiveRecord: 75.3ms)
+
+
+Started GET "/lessons/1" for 10.0.2.2 at 2019-08-06 07:51:33 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLesson Load (8.3ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (5.6ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (40.1ms)
+Completed 200 OK in 1749ms (Views: 1610.7ms | ActiveRecord: 29.0ms)
+
+
+Started POST "/lessons/1/attendances" for 10.0.2.2 at 2019-08-06 07:51:37 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#create as HTML
+  Parameters: {"authenticity_token"=>"WlAldtLaV3ArClxftBKJVWEwc6UPDmOntlQRH230HQwwUzk0gfeOMPnoEYI3ldGj2NcHVw2lVcz2TjzVkJwEkQ==", "lesson_id"=>"1"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[36mLesson Load (4.1ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[36mAttendance Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."lesson_id" = ? AND "attendances"."user_id" = ? LIMIT ?[0m  [["lesson_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[36mAttendance Create (20.2ms)[0m  [1m[32mINSERT INTO "attendances" ("lesson_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["lesson_id", 1], ["user_id", 1], ["created_at", "2019-08-06 07:51:37.892419"], ["updated_at", "2019-08-06 07:51:37.892419"]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[35m (15.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/attendances_controller.rb:4
+Redirected to http://localhost:3000/lessons/1
+Completed 302 Found in 192ms (ActiveRecord: 44.2ms)
+
+
+Started GET "/lessons/1" for 10.0.2.2 at 2019-08-06 07:51:37 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLesson Load (5.0ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (5.1ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 1687ms (Views: 1554.3ms | ActiveRecord: 24.4ms)
+
+
+Started GET "/lessons/1" for 10.0.2.2 at 2019-08-06 07:52:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLesson Load (5.7ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (4.9ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (48.6ms)
+Completed 200 OK in 17922ms (Views: 17795.2ms | ActiveRecord: 27.5ms)
+
+
+Started GET "/lessons/1" for 10.0.2.2 at 2019-08-06 07:53:47 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLesson Load (5.3ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (39.3ms)
+Completed 200 OK in 10113ms (Views: 9977.1ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/lessons" for 10.0.2.2 at 2019-08-06 07:56:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#index as HTML
+  Rendering lessons/index.html.erb within layouts/application
+  [1m[36mLesson Load (4.8ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons"[0m
+  ↳ app/views/lessons/index.html.erb:2
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/index.html.erb:8
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 2]]
+  ↳ app/views/lessons/index.html.erb:8
+  [1m[35m (5.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 3]]
+  ↳ app/views/lessons/index.html.erb:8
+  [1m[35m (5.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 4]]
+  ↳ app/views/lessons/index.html.erb:8
+  Rendered lessons/index.html.erb within layouts/application (56.6ms)
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 1905ms (Views: 1716.1ms | ActiveRecord: 31.4ms)
+
+
+Started GET "/lessons/2" for 10.0.2.2 at 2019-08-06 07:56:07 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLesson Load (5.5ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 2]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (4.5ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 2]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (40.8ms)
+Completed 200 OK in 1532ms (Views: 1417.2ms | ActiveRecord: 23.0ms)
+
+
+Started POST "/lessons/2/attendances" for 10.0.2.2 at 2019-08-06 07:56:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#create as HTML
+  Parameters: {"authenticity_token"=>"KxO3IrqbOPALtuS8LQU+wOoqmKLwGWn9+QszKgMEHN27oacNonMODCWffoqpmieafJWavOHE5U/C6RZCjXo3EA==", "lesson_id"=>"2"}
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[36mLesson Load (3.9ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[36mAttendance Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."lesson_id" = ? AND "attendances"."user_id" = ? LIMIT ?[0m  [["lesson_id", 2], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[36mAttendance Create (16.5ms)[0m  [1m[32mINSERT INTO "attendances" ("lesson_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["lesson_id", 2], ["user_id", 1], ["created_at", "2019-08-06 07:56:10.445261"], ["updated_at", "2019-08-06 07:56:10.445261"]]
+  ↳ app/controllers/attendances_controller.rb:4
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/attendances_controller.rb:4
+Redirected to http://localhost:3000/lessons/2
+Completed 302 Found in 80ms (ActiveRecord: 39.5ms)
+
+
+Started GET "/lessons/2" for 10.0.2.2 at 2019-08-06 07:56:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLesson Load (5.3ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 2]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  [1m[36mAttendance Exists (5.5ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."user_id" = ? AND "attendances"."lesson_id" = ? LIMIT ?[0m  [["user_id", 1], ["lesson_id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:7
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 2]]
+  ↳ app/views/lessons/show.html.erb:16
+  Rendered lessons/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 1631ms (Views: 1498.0ms | ActiveRecord: 25.4ms)
+
+

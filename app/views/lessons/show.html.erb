@@ -2,14 +2,22 @@
 <%= @lesson.lesson_name %>
 <%= @lesson.location %>
 <%= @lesson.time %>
-<%= @lesson.entry_count %>
+<p>定員<%= @lesson.entry_count %>人</p>
 <%= @lesson.over_view %>
 
 <h3><%= @lesson.attendances.count %>人が参加予定です</h3>
-<% if current_user.already_attendanced?(@lesson) %>
-	<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
+<% if @lesson.entry_count == @lesson.attendances.count %>
+	<% if current_user.already_attendanced?(@lesson) %>
+		<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
+	<% else %>
+		<p>定員に達しました</p>
+	<% end %>
 <% else %>
-	<%= button_to "参加する", lesson_attendances_path(@lesson) %>
+	<% if current_user.already_attendanced?(@lesson) %>
+		<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
+	<% else %>
+		<%= button_to "参加する", lesson_attendances_path(@lesson) %>
+	<% end %>
 <% end %>
 
 <h2>参加予定のユーザー</h2>
