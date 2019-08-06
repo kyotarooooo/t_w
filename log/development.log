@@ -7307,3 +7307,132 @@ Migrating to AddEntryCountToLessons (20190806072059)
   ↳ bin/rails:9
   [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAttendances (20190806072436)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAttendances (20190806072436)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190806072436_create_attendances.rb:3
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "attendances" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "lesson_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_d1c9a7cdea"
+FOREIGN KEY ("lesson_id")
+  REFERENCES "lessons" ("id")
+, CONSTRAINT "fk_rails_77ad02f5c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20190806072436_create_attendances.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_attendances_on_lesson_id" ON "attendances" ("lesson_id")[0m
+  ↳ db/migrate/20190806072436_create_attendances.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_attendances_on_user_id" ON "attendances" ("user_id")[0m
+  ↳ db/migrate/20190806072436_create_attendances.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190806072436"]]
+  ↳ bin/rails:9
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (4.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 10.0.2.2 at 2019-08-06 07:48:24 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (5.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:21
+  Rendered items/index.html.erb within layouts/application (89.1ms)
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 24348ms (Views: 24012.2ms | ActiveRecord: 59.5ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2019-08-06 07:48:53 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (3.7ms)
+  Rendered users/sessions/new.html.erb within layouts/application (597.6ms)
+Completed 200 OK in 2210ms (Views: 2131.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 10.0.2.2 at 2019-08-06 07:49:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wQnYgoMFRpECMRmymSywiY3m0xJva8odfYXFtbfXnsXXN3z2WRaLVCYCCNFd+y3QHj0MADiEsUiMZU2E0miAuQ==", "user"=>{"email"=>"aaa@aaa.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "aaa@aaa.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 781ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2019-08-06 07:49:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mItem Load (4.5ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  ↳ app/views/items/index.html.erb:21
+  Rendered items/index.html.erb within layouts/application (9.6ms)
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 1691ms (Views: 1591.1ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/lessons" for 10.0.2.2 at 2019-08-06 07:49:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#index as HTML
+  Rendering lessons/index.html.erb within layouts/application
+  [1m[36mLesson Load (4.7ms)[0m  [1m[34mSELECT "lessons".* FROM "lessons"[0m
+  ↳ app/views/lessons/index.html.erb:2
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/index.html.erb:8
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 2]]
+  ↳ app/views/lessons/index.html.erb:8
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 3]]
+  ↳ app/views/lessons/index.html.erb:8
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "attendances" ON "users"."id" = "attendances"."user_id" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 4]]
+  ↳ app/views/lessons/index.html.erb:8
+  Rendered lessons/index.html.erb within layouts/application (207.3ms)
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 1849ms (Views: 1665.0ms | ActiveRecord: 59.3ms)
+
+
+Started GET "/lessons/1" for 10.0.2.2 at 2019-08-06 07:49:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by LessonsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLesson Load (6.7ms)[0m  [1m[34mSELECT  "lessons".* FROM "lessons" WHERE "lessons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/lessons_controller.rb:25
+  Rendering lessons/show.html.erb within layouts/application
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."lesson_id" = ?[0m  [["lesson_id", 1]]
+  ↳ app/views/lessons/show.html.erb:8
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/lessons/show.html.erb:9
+  Rendered lessons/show.html.erb within layouts/application (122.9ms)
+Completed 500 Internal Server Error in 522ms (ActiveRecord: 29.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `already_attendanced?' for #<User:0x00007faf898d2828>):
+     6: <%= @lesson.over_view %>
+     7: 
+     8: <h3><%= @lesson.attendances.count %></h3>
+     9: <% if current_user.already_attendanced?(@lesson) %>
+    10: 	<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
+    11: <% else %>
+    12: 	<%= button_to "参加する", lesson_attendances_path(@lesson) %>
+  
+app/views/lessons/show.html.erb:9:in `_app_views_lessons_show_html_erb__827818574027289137_70195952127240'

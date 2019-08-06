@@ -23,6 +23,7 @@ class LessonsController < ApplicationController
 
 	def show
 		@lesson = Lesson.find(params[:id])
+		@attendance = Attendance.new
 	end
 
 	private

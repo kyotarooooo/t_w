@@ -4,3 +4,15 @@
 <%= @lesson.time %>
 <%= @lesson.entry_count %>
 <%= @lesson.over_view %>
+
+<h3><%= @lesson.attendances.count %>人が参加予定です</h3>
+<% if current_user.already_attendanced?(@lesson) %>
+	<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete %>
+<% else %>
+	<%= button_to "参加する", lesson_attendances_path(@lesson) %>
+<% end %>
+
+<h2>参加予定のユーザー</h2>
+<% @lesson.attendanced_users.each do |user| %>
+	<li><%= user.user_name %></li>
+<% end %>

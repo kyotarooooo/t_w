@@ -62,6 +62,10 @@
 	</div>
 	<div class="col-xs-1"></div>
 </div>
+<h3>参加予定のレッスン</h3>
+<% @user.attendanced_lessons.each do |lesson| %>
+	<%= lesson.lesson_name %>
+<% end %>
 
 <!-- ログインしている以外の詳細ページ -->
 <% else %>
