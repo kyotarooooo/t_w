@@ -7,21 +7,23 @@
 		<p class = "lesson-show2">開催時間 : <%= @lesson.time %></p>
 		<p class = "lesson-show2">定員 : <%= @lesson.entry_count %>人</p>
 		<p class = "lesson-show2"><%= @lesson.over_view %></p>
+		<%= link_to "編集する", edit_lesson_path(@lesson), class: "btn btn-info" %>
+		<%= link_to "削除する", lesson_path(@lesson), method: :delete, "data-confirm" => "削除してもよろしいでしょうか？", class: "btn btn-danger" %>
 	</div>
 	<div class="col-xs-5">
 		<h3 class = "lesson-show1"><%= @lesson.attendances.count %>人が参加予定です</h3>
 		<% if @lesson.entry_count == @lesson.attendances.count %>
 			<% if current_user.already_attendanced?(@lesson) %>
-				<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete, :class => "btn btn-info" %>
+				<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete, :class => "btn btn-warning" %>
 			<% else %>
 				<p>申し訳ございません。<br>
 				定員に達してしまいました。</p>
 			<% end %>
 		<% else %>
 			<% if current_user.already_attendanced?(@lesson) %>
-				<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete, :class => "btn btn-info" %>
+				<%= button_to "不参加にする", lesson_attendance_path(@lesson), method: :delete, :class => "btn btn-warning" %>
 			<% else %>
-				<%= button_to "参加する", lesson_attendances_path(@lesson), :class => "btn btn-info" %>
+				<%= button_to "参加する", lesson_attendances_path(@lesson), :class => "btn btn-warning" %>
 			<% end %>
 		<% end %>
 	</div>
