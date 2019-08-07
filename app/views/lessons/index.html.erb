@@ -12,13 +12,13 @@
 	<div class="col-xs-10">
 		<% @lessons.each do |lesson| %>
 			<div class = "lesson-index1">
-				<%= link_to lesson.lesson_name, lesson_path(lesson) %><br>
+				レッスン名 : <%= link_to lesson.lesson_name, lesson_path(lesson) %><br>
 				<br>
-				<%= lesson.location %><br>
+				開催場所 : <%= lesson.location %><br>
 				<br>
-				<%= lesson.time %><br>
+				時間 : <%= lesson.time %><br>
 				<br>
-				<%= lesson.entry_count %><br>
+				定員 : <%= lesson.entry_count %>人<br>
 				<br>
 				<%= lesson.attendanced_users.count %>人が参加中
 			</div>
