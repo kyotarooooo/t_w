@@ -31,7 +31,7 @@
 
 			<div class = "field">
 				<%= f.label :長さ %><br />
-				<p><%= f.text_field :length, autofocus: true, autocomplete: "off" %>mm</p>
+				<p><%= f.text_field :length, autofocus: true, autocomplete: "off" %></p>
 			</div>
 
 			<div class = "field">
@@ -52,6 +52,16 @@
 			<div class = "field">
 				<%= f.label :カラー %><br />
 				<%= f.text_field :color, autofocus: true, autocomplete: "off" %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :価格 %><br />
+				<%= f.text_field :price, autofocus: true, autocomplete: "off" %>円
+			</div>
+
+			<div class = "field">
+				<%= f.label :在庫 %><br />
+				<%= f.text_field :stock, autofocus: true, autocomplete: "off" %>
 			</div>
 
 			<div class = "field">
