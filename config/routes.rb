@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root "items#index"
+  get "items/:id/purchase" => "items#purchase", as: "purchase"
+  patch "items/:id/purchase_confirm" => "items#purchase_confirm", as: "purchase_confirm"
+  get "items/:id/purchase/complete" => "items#complete", as: "purchase_complete"
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
   resources :items, only: [:new, :create, :show, :edit, :update, :destroy]

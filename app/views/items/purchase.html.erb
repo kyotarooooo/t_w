@@ -1,0 +1,70 @@
+<div class="row space">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<h1>購入確認画面</h1>
+	</div>
+	<div class="col-xs-1"></div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-4 item-index1">
+		<div class = "field">
+			<%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
+		</div>
+		<div class = "item-purchase1">
+			<%= link_to "購入する", purchase_confirm_path(@item), method: :patch, "data-confirm" => "購入する前に出品者に確認しましたか？", class: "btn btn-success" %>
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<div class = "field">
+			<p>出品者 : <%= @item.user.user_name %></p>
+		</div>
+
+		<div class = "field">
+			<p>アイテム : <%= @item.item_name %></p>
+		</div>
+
+		<div class = "field">
+			<p>カテゴリー : <%= @item.category_name %></p>
+		</div>
+
+		<div class = "field">
+			<p>長さ : <%= @item.length %></p>
+		</div>
+
+		<div class = "field">
+			<p>ウエイト : <%= @item.weight %>g</p>
+		</div>
+
+		<div class = "field">
+			<p>グリップ : <%= @item.grip %></p>
+		</div>
+
+		<div class = "field">
+			<p>フェイス : <%= @item.face %>inch</p>
+		</div>
+
+		<div class = "field">
+			<p>カラー : <%= @item.color %></p>
+		</div>
+
+		<div class = "field">
+			<p><%= @item.price %>円</p>
+		</div>
+
+		<div class = "field">
+			<p>在庫 : <%= @item.stock %></p>
+		</div>
+
+		<div class = "field">
+			<%= @item.body %>
+		</div>
+	</div>
+	<div class="col-xs-1"></div>
+</div>
+
+
+
+

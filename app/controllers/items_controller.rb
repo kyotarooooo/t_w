@@ -43,6 +43,20 @@ class ItemsController < ApplicationController
 		redirect_to root_path
 	end
 
+	def purchase
+		@item = Item.find(params[:id])
+	end
+
+	def purchase_confirm
+		@item = Item.find(params[:id])
+		@item.update(purchase: true, purchased_at: Time.current)
+		redirect_to purchase_complete_path
+	end
+
+	def complete
+		@item = Item.find(params[:id])
+	end
+
 	private
 		def item_params
 			params.require(:item).permit(:user_id, :item_image, :item_name, :category_name, :length, :weight, :grip, :face, :color, :body, :price, :stock)
