@@ -12655,3 +12655,24 @@ Processing by ItemsController#show as HTML
 Completed 200 OK in 1740ms (Views: 1635.3ms | ActiveRecord: 13.6ms)
 
 
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddPurchasedAtToItems (20190811064009)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (14.3ms)[0m  [1m[35mALTER TABLE "items" ADD "purchased_at" datetime[0m
+  ↳ db/migrate/20190811064009_add_purchased_at_to_items.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ADD "purchase" boolean DEFAULT 0 NOT NULL[0m
+  ↳ db/migrate/20190811064009_add_purchased_at_to_items.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (3.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190811064009"]]
+  ↳ bin/rails:9
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (4.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
