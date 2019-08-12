@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "items/:id/purchase" => "items#purchase", as: "purchase"
   patch "items/:id/purchase_confirm" => "items#purchase_confirm", as: "purchase_confirm"
   get "items/:id/purchase/complete" => "items#complete", as: "purchase_complete"
+  get "items/purchase/index" => "items#purchase_index", as: "purchase_index"
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
   resources :items, only: [:new, :create, :show, :edit, :update, :destroy]

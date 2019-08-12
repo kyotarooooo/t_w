@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
 		@items = Item.all
 	end
 
+	def purchase_index
+		@items = Item.all
+	end
+
 	def new
 		@item = Item.new
 	end
@@ -62,3 +66,4 @@ class ItemsController < ApplicationController
 			params.require(:item).permit(:user_id, :item_image, :item_name, :category_name, :length, :weight, :grip, :face, :color, :body, :price, :stock)
 		end
 end
+
