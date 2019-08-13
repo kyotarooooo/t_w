@@ -9,41 +9,64 @@
 
 <div class="row">
 	<div class="col-xs-1"></div>
-	<div class="col-xs-4 item-index1">
+	<div class="col-xs-4 item-show1">
 		<div class = "field">
 			<%= attachment_image_tag @item, :item_image, :fill, 300, 300, format: 'jpeg' %>
 		</div>
-		<div class = "item-index2">
+		<div class = "item-show2">
 			<% if @item.user == current_user %>
 				<%= link_to "編集", edit_item_path(@item), class: "btn btn-info" %>
 				<%= link_to "削除", item_path(@item), method: :delete, "data-confirm" => "削除してもよろしいでしょうか？", class: "btn btn-danger" %>
 				<!--いいね機能-->
-				<%= link_to @item.likes.count, liked_users_path(@item) %>人がいいねをしています
 				<% if current_user.already_liked?(@item) %>
-					<%= button_to "いいねを取り消す", item_like_path(@item), method: :delete %>
+				<div class = "item-show4">
+					<%= link_to item_like_path(@item), method: :delete do %>
+			            <i class="fas fa-heart" style="color: red;" ></i>
+			        <% end %>
+			    </div>
 				<% else %>
-					<%= button_to "いいね", item_likes_path(@item) %>
+				<div class = "item-show4">
+					<%= link_to item_likes_path(@item), method: :post do %>
+			        	<i class="far fa-heart"></i>
+			        <% end %>
+			    </div>
 				<% end %>
+				<p><%= link_to @item.likes.count, liked_users_path(@item) %>人がいいねをしています</p>
 			<% else %>
 				<% if @item.purchase == true %>
-					<p class = "item-index3">SOLDOUT!!</p>
+					<p class = "item-show3">SOLDOUT!!</p>
 					<!--いいね機能-->
-					<%= link_to @item.likes.count, liked_users_path(@item) %>人がいいねをしています
 					<% if current_user.already_liked?(@item) %>
-						<%= button_to "いいねを取り消す", item_like_path(@item), method: :delete %>
+					<div class = "item-show4">
+						<%= link_to item_like_path(@item), method: :delete do %>
+				            <i class="fas fa-heart" style="color: red;" ></i>
+				        <% end %>
+				    </div>
 					<% else %>
-						<%= button_to "いいね", item_likes_path(@item) %>
+					<div class = "item-show4">
+						<%= link_to item_likes_path(@item), method: :post do %>
+				        	<i class="far fa-heart"></i>
+				        <% end %>
+				    </div>
 					<% end %>
+					<p><%= link_to @item.likes.count, liked_users_path(@item) %>人がいいねをしています</p>
+				<% else %>
+					<%= link_to "購入画面へ進む", purchase_path(@item), class: "btn btn-info" %>
+					<% if current_user.already_liked?(@item) %>
+					<div class = "item-show4">
+						<%= link_to item_like_path(@item), method: :delete do %>
+				            <i class="fas fa-heart" style="color: red;" ></i>
+				        <% end %>
+				    </div>
 					<% else %>
-						<%= link_to "購入画面へ進む", purchase_path(@item), class: "btn btn-info" %>
-						<!--いいね機能-->
-						<%= link_to @item.likes.count, liked_users_path(@item) %>人がいいねをしています
-						<% if current_user.already_liked?(@item) %>
-							<%= button_to "いいねを取り消す", item_like_path(@item), method: :delete %>
-						<% else %>
-							<%= button_to "いいね", item_likes_path(@item) %>
-						<% end %>
+					<div class = "item-show4">
+						<%= link_to item_likes_path(@item), method: :post do %>
+				        	<i class="far fa-heart"></i>
+				        <% end %>
+				    </div>
 					<% end %>
+					<p><%= link_to @item.likes.count, liked_users_path(@item) %>人がいいねをしています</p>
+				<% end %>
 			<% end %>
 		</div>
 	</div>

@@ -97,10 +97,28 @@
 </div>
 
 <!--いいねしたアイテム-->
-<p>いいねしたアイテム</p>
-<% @user.liked_items.each do |item| %>
-	<%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg' %>
-<% end %>
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<p>いいねしたアイテム</p>
+	</div>
+	<div class="col-xs-1"></div>
+</div>
+
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10">
+		<% @user.liked_items.each do |item| %>
+			<div class = "user-show3">
+				<%= link_to item_path(item) do %>
+					<%= attachment_image_tag item, :item_image, :fill, 200, 200, format: 'jpeg' %><br>
+				<% end %>
+				<%= item.item_name %>
+			</div>
+		<% end %>
+	</div>
+	<div class="col-xs-1"></div>
+</div>
 
 
 
