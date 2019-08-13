@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   patch "items/:id/purchase_confirm" => "items#purchase_confirm", as: "purchase_confirm"
   get "items/:id/purchase/complete" => "items#complete", as: "purchase_complete"
   get "items/purchase/index" => "items#purchase_index", as: "purchase_index"
+  get "items/:id/liked_users" => "items#liked_users", as: "liked_users"
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
-  resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :items, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :likes, only: [:create, :destroy]
+  end
   resources :lessons, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :attendances, only: [:create, :destroy]
   end

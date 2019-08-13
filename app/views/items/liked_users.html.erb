@@ -1,0 +1,8 @@
+<h1>いいねしたユーザー</h1>
+<%= @item.likes.count %>人のユーザーがいいねしています
+
+<% @item.liked_users.each do |user| %>
+	<%= user.user_name %>
+<% end %>
+
+<%= link_to "アイテム詳細に戻る", item_path(@item) %>
