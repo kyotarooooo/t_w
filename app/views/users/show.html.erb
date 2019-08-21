@@ -4,6 +4,8 @@
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
 			<h1>マイページ</h1>
+			フォロワー<%= @user.followers.count %>
+			フォロー<%= @user.following.count %>
 		</div>
 		<div class="col-xs-1"></div>
 	</div>
@@ -202,7 +204,9 @@
 	</div>
 	<div class="col-xs-1"></div>
 </div>
+フォロワー<%= @user.followers.count %>
+フォロー<%= @user.following.count %>
+<%= render 'follow_form' %>
 <% end %>
-
 
 

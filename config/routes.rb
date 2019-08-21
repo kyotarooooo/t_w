@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "items/:id/liked_users" => "items#liked_users", as: "liked_users"
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show, :index]
+  resources :relationships, only: [:create, :destroy]
   resources :items, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :likes, only: [:create, :destroy]
   end
@@ -28,6 +29,10 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
 }
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get :following, :followers
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
