@@ -1,21 +1,35 @@
-<%= attachment_image_tag @entry2, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100', class: 'img-circle profile-thumb my-img edit-img' %>
-
-
-
+<h1>トークルーム</h1>
+<% @entries.each do |e| %>
+	<p><%= e.user.user_name %></p>
+<% end %>
 <hr>
 <% if @messages.present? %>
 	<% @messages.each do |m| %>
-		<strong><%= m.content %></strong>
-		<small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-		<hr>
+		<% if m.user == current_user %>
+			<div class="mycomment">
+			    <p><%= m.content %></p>
+			  </div>
+		<% else %>
+			<div class="balloon5">
+			  <div class="faceicon">
+			    <%= attachment_image_tag m.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100', class: 'img-circle profile-thumb my-img edit-img' %>
+			  </div>
+			  <div class="chatting">
+			    <div class="says">
+			      <p><%= m.content %></p>
+			    </div>
+			  </div>
+			</div>
+		<% end %>
 	<% end %>
 <% else %>
-	<h3 class = "text-center">メッセージを送ってみよう！</h3>
+	<h3 class = "text-center">トーク履歴がありません</h3>
 <% end %>
 
-<%= form_for @message do |f| %>
-	<%= f.text_field :content, :placeholder => "メッセージを入力してください", :size => 70 %>
-	<%= f.hidden_field :room_id, :value => @room.id %>
-	<br>
-	<%= f.submit "送信" %>
-<% end %>
+<div class = "room1">
+	<%= form_for @message do |f| %>
+		<%= f.text_field :content, :placeholder => "メッセージを入力してください", :size => 100 %>
+		<%= f.hidden_field :room_id, :value => @room.id %>
+		<%= f.submit "送信" %>
+	<% end %>
+</div>
